@@ -9,32 +9,32 @@ class Clinica {
 }
 
 class Personal {
-    constructor(nombre, apellido, pacientes, matricula) {
+    constructor(nombre, apellido, paciente, matricula) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.matricula = matricula;
-        this.pacientes = pacientes;
+        this.paciente = paciente;
     }
 }
 
 class Enfermero extends Personal {
-    constructor(nombre, apellido, pacientes, matricula, licenciatura) {
-        super(nombre, apellido, pacientes, matricula);
-        this.licenciatura;
+    constructor(nombre, apellido, paciente, matricula, licenciatura) {
+        super(nombre, apellido, paciente, matricula);
+        this.licenciatura = licenciatura;
+    }
+    datos_doctor() {
+        return 'Nombre: ' + this.nombre + ' - Apellido: ' + this.apellido + ' - Pacientes: ' + this.paciente + ' - Matricula: ' + this.matricula + ' - Especialidad: ' + this.licenciatura;
     }
 }
 class Doctor extends Personal {
-    constructor(nombre, apellido, pacientes, matricula, especialidad) {
-        super(nombre, apellido, pacientes, matricula);
-        this.especialidad;
+    constructor(nombre, apellido, paciente, matricula, especialidad) {
+        super(nombre, apellido, paciente, matricula);
+        this.especialidad = especialidad;
     }
     datos_doctor() {
-        return 'Nombre: ' + this.nombre + ' - Apellido: ' + this.apellido + ' - Pacientes: ' + this.pacientes+ ' - Matricula: ' + this.matricula + ' - Especialidad: ' + this.especialidad;
+        return 'Nombre: ' + this.nombre + ' - Apellido: ' + this.apellido + ' - Pacientes: ' + this.paciente + ' - Matricula: ' + this.matricula + ' - Especialidad: ' + this.especialidad;
     }
 }
-
-
-let enfermero1 = new Doctor('Juan', 'Carrozas', pacientes, 'Matricula1?', 'Licenciatura?')
 
 class Paciente {
     constructor(nombre, apellido, dni, fecha_n, turno, obra_s, Doctor) {
@@ -53,6 +53,8 @@ class Paciente {
 var pacientes = []
 var pacientes_julian = []
 var pacientes_javier = []
+var pacientes_carrozas = []
+var pacientes_orozco = []
 function ingresarPaciente() {
     let nombre = document.getElementById("nombre").value
     let apellido = document.getElementById("apellido").value
@@ -61,13 +63,19 @@ function ingresarPaciente() {
     let turno = document.getElementById("turno").value
     let obra_s = document.getElementById("obra_s").value
     let Doctor = document.getElementById("doctor").value
-    let paciente = new Paciente(nombre, apellido, dni, fecha_n, turno, obra_s, Doctor)
+    let paciente = new Paciente(nombre, apellido, dni, fecha_n, turno, obra_s, Doctor) 
     switch (Doctor) {
         case 'Julian':
-            pacientes_julian.push(paciente.Paciente[1]);
+            pacientes_julian.push(paciente.apellido,paciente.turno);
             break;
         case 'Javier':
-            pacientes_javier.push(paciente);
+            pacientes_javier.push(paciente.apellido);
+            break;
+        case 'Carrozas':
+            pacientes_carrozas.push(paciente.apellido);
+            break;
+        case 'Orozco':
+            pacientes_orozco.push(paciente.apellido);
             break;
     }
     pacientes.push(paciente)
@@ -91,9 +99,12 @@ function mostrarPacientes() {
     }
 }
 
-let doctor1 = new Doctor('Julian', 'Rozas', pacientes_julian, 'Matricula?', 'Especialiad?');
-let doctor2 = new Doctor('Javier', 'Parra', pacientes_javier, 'Matricula?', 'Especialiad?');
-var doctores = [doctor1, doctor2];
+let doctor1 = new Doctor('Julian', 'Rozas', pacientes_julian, 'Nacional', 'Pediatria');
+let doctor2 = new Doctor('Javier', 'Parra', pacientes_javier, 'Nacional', 'Cardiologo');
+let enfermero1 = new Enfermero('Juan', 'Carrozas', pacientes_carrozas, 'Provincial', 'Enfermeria');
+let enfermero2 = new Enfermero('Mariano', 'Orozco', pacientes_orozco, 'Nacional', 'Enfermeria');
+var doctores = [doctor1, doctor2,enfermero1, enfermero2];
+
 
 function mostrarDoctores() {
     let ul = document.getElementById("uld")
@@ -112,6 +123,7 @@ function mostrarDoctores() {
         }
     }
 }
+
 
 
 
