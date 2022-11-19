@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Televisores</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <input type="text" name="nombre" id="nombre" class="form-control m-3" placeholder="Nombre">
+                <input type="text" name="apellido" id="apellido" class="form-control m-3" placeholder="Apellido">
+                <input type="text" name="dni" id="dni" class="form-control m-3" placeholder="Dni">
+                <input type="text" name="fecha_n" id="fecha_n" class="form-control m-3" placeholder="Fecha de nacimiento">
+                <input type="text" name="turno" id="turno" class="form-control m-3" placeholder="Horario y fecha del turno">
+                <label for="doctor">Elija un doctor</label>
+                <select id="doctor" class="form-select" aria-label="Default select example">
+                  <option value="Julian">Julian</option>
+                  <option value="Javier">Javier</option>
+                  <option value="Carrozas">Carrozas</option>
+                </select>
+                <input type="text" name="obra_s" id="obra_s" class="form-control m-3" placeholder="Obra social">
+                <button class="btn btn-success" onclick="ingresarPaciente()">Ingresar Paciente  <i class="bi bi-wallet-fill"></i></button>
+            </div>
+            <div class="col-7">
+                <div id="demo"></div>
+            </div>
+            <button onclick="mostrarPacientes()" class="btn btn-primary btn-block m-3" >Mostrar Pacientes</button>
+            <ul id="ul"></ul>
+            <button onclick="mostrarDoctores()" class="btn btn-primary btn-block m-3" >Mostrar Doctores</button>
+            <ul id="uld"></ul>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
