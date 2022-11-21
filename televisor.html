@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,34 +9,47 @@
     <link rel="stylesheet" href="./bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 </head>
+
 <body>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand m-2 h1">Clinica</span>
+    </nav>
     <div class="container">
         <div class="row">
             <div class="col-5">
+                <label for="doctor">Nombre: </label>
                 <input type="text" name="nombre" id="nombre" class="form-control m-3" placeholder="Nombre">
+                <label for="doctor">Apellido: </label>
                 <input type="text" name="apellido" id="apellido" class="form-control m-3" placeholder="Apellido">
-                <input type="text" name="dni" id="dni" class="form-control m-3" placeholder="Dni">
-                <input type="text" name="fecha_n" id="fecha_n" class="form-control m-3" placeholder="Fecha de nacimiento">
-                <input type="text" name="turno" id="turno" class="form-control m-3" placeholder="Horario y fecha del turno">
-                <label for="doctor">Elija un doctor</label>
-                <select id="doctor" class="form-select" aria-label="Default select example">
-                  <option value="Julian">Julian</option>
-                  <option value="Javier">Javier</option>
-                  <option value="Carrozas">Carrozas</option>
-                  <option value="Orozco">Orozco</option>
+                <label for="doctor">DNI: </label>
+                <input type="number" name="dni" id="dni" class="form-control m-3" placeholder="Dni">
+                <label for="doctor">Fecha de Nacimiento: </label>
+                <input type="date" name="fecha_n" id="fecha_n" class="form-control m-3"
+                    placeholder="Fecha de nacimiento">
+                <label for="doctor">Escriba el horario del turno: </label>
+                <input type="text" name="turno" id="turno" class="form-control m-3"
+                    placeholder="Horario y fecha del turno">
+                <label for="doctor">Elija un doctor: </label>
+                <select id="doctor" class="form-select form-control m-3" aria-label="Default select example">
+                    <option value="Julian">Julian</option>
+                    <option value="Javier">Javier</option>
+                    <option value="Carrozas">Carrozas</option>
+                    <option value="Orozco">Orozco</option>
                 </select>
+                <label for="doctor">Escriba la obra social: </label>
                 <input type="text" name="obra_s" id="obra_s" class="form-control m-3" placeholder="Obra social">
-                <button class="btn btn-success" onclick="ingresarPaciente()">Ingresar Paciente  <i class="bi bi-wallet-fill"></i></button>
+                <button class="btn btn-success" onclick="ingresarPaciente(),calcular_edad()">Ingresar Paciente <i
+                        class="bi bi-wallet-fill"></i></button>
             </div>
             <div class="col-7">
-                <div id="demo"></div>
+                <button onclick="mostrarPacientes()" class="btn btn-primary btn-block m-3">Mostrar Pacientes</button>
+                <ul id="ul"></ul>
+                <button onclick="mostrarDoctores()" class="btn btn-primary btn-block m-3">Mostrar Doctores</button>
+                <ul id="uld"></ul>
             </div>
-            <button onclick="mostrarPacientes()" class="btn btn-primary btn-block m-3" >Mostrar Pacientes</button>
-            <ul id="ul"></ul>
-            <button onclick="mostrarDoctores()" class="btn btn-primary btn-block m-3" >Mostrar Doctores</button>
-            <ul id="uld"></ul>
         </div>
     </div>
     <script src="./script.js"></script>
 </body>
+
 </html>

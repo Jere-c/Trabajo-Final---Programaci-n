@@ -35,7 +35,16 @@ class Doctor extends Personal {
         return 'Nombre: ' + this.nombre + ' - Apellido: ' + this.apellido + ' - Pacientes: ' + this.paciente + ' - Matricula: ' + this.matricula + ' - Especialidad: ' + this.especialidad;
     }
 }
-
+function calcular_edad(fecha_n){
+    var hoy = new Date();
+    var fecha = new Date(fecha_n);
+    var edad = hoy.getFullYear() - fecha.getFullYear();
+    var m = hoy.getMonth() - fecha.getMonth();
+    if (m < 0 || (m === 0 && hoy.getDate() < fecha.getDate())){
+        edad --;
+    }
+    return edad
+}
 class Paciente {
     constructor(nombre, apellido, dni, fecha_n, turno, obra_s, Doctor) {
         this.nombre = nombre;
@@ -46,8 +55,8 @@ class Paciente {
         this.obra_s = obra_s;
         this.Doctor = Doctor;
     }
-    datos_paciente() {
-        return 'Nombre: ' + this.nombre + '- Apellido: ' + this.apellido + ' - DNI: ' + this.dni + ' - Fecha de Nacimiento: ' + this.fecha_n + ' - Turno: ' + this.turno + ' - Obra Social: ' + this.obra_s + ' - Doctor: ' + this.Doctor;
+    datos_paciente(edad) {
+        return edad + 'Nombre: ' + this.nombre + '- Apellido: ' + this.apellido + ' - DNI: ' + this.dni + ' - Fecha de Nacimiento: ' + this.fecha_n + ' - Turno: ' + this.turno + ' - Obra Social: ' + this.obra_s + ' - Doctor: ' + this.Doctor;
     }
 }
 var pacientes = []
@@ -81,6 +90,9 @@ function ingresarPaciente() {
     pacientes.push(paciente)
     console.log(doctores)
 }
+
+
+
 function mostrarPacientes() {
     let ul = document.getElementById("ul")
     if (ul.value !== "") {
